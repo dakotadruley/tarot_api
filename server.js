@@ -1,11 +1,8 @@
-require('dotenv').config();
-require('./lib/utils/client')();
+const models = require('./index.js');
 
-const app = require('./lib/app');
+const init = async() => {
+  await models.Cards.sync({ force: true }); 
+  console.log('Tables have synced!');
+};
 
-const PORT = process.env.PORT || 7890;
-
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Started on ${PORT}`);
-});
+init();
