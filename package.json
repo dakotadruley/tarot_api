@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --verbose --runInBand --testLocationInResults",
     "test:watch": "npm run test -- --watch",
-    "start": "nodemon main.js",
+    "start": "node index.js",
     "start:watch": "node seed.js"
   },
   "jest": {
