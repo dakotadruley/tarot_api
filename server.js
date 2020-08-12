@@ -1,9 +1,18 @@
 require('dotenv').config();
-const models = require('./index.js');
+const express = require('express');
+const app = express();
+const port = 3000;
+const models = require('./seed.js');
 
-const init = async() => {
-  await models.Cards.sync({ force: true }); 
-  console.log('Tables have synced!');
-};
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
-init();
+app.get('/card', async(req, res) => {
+  const card = await models.cards;
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
