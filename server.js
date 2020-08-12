@@ -1,3 +1,4 @@
+require('dotenv').config();
 const models = require('./index.js');
 
 const init = async() => {
