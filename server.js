@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/card', async(req, res) => {
-  const card = await models.cards;
-  res.send('Hello World!');
+  const cards = await models.Card.findAll({});
+  res.json('cards');
 });
 
 app.listen(port, () => {
