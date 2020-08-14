@@ -1,9 +1,14 @@
 const { db, Card } = require('../index.js');
 
+const init = async() => {
+  await Card.sync({ force: true }); 
+  console.log('Tables have synced!');
+};
+
 const seed = async() => {
   await db.sync({ force: true });
-
-  const Fool = await Card.create({
+  
+  await Card.create({
     name: 'The Fool',
     number: 'Zero',
     img: 'fool.com',
@@ -13,4 +18,6 @@ const seed = async() => {
   console.log('Seed Successful!');
 };
 
-seed();
+init().then(() => {
+  seed();
+});

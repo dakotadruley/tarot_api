@@ -1,6 +1,14 @@
 require('dotenv').config();
 const Sequelize = require('sequelize');
-const db = new Sequelize(process.env.DATABASE_URI, { logging: false });
+const db = new Sequelize(process.env.DATABASE_URI, 
+  { logging: false, dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  } });
+
+
 
 const Card = db.define('cards', {
   name: {
