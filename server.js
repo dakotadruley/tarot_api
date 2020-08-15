@@ -2,15 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 3000;
-const models = require('./data/seed.js');
+const { Card } = require('./index.js');
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
 app.get('/card', async(req, res) => {
-  const cards = await models.Card.findAll({});
-  res.json('cards');
+  const cards = await Card.findAll();
+  res.json(cards);
 });
 
 app.listen(port, () => {
