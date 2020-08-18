@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 3000;
-const { Card } = require('./index.js');
+const { Card } = require('./lib/models/Card.js');
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
