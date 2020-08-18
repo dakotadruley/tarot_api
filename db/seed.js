@@ -12,7 +12,7 @@ const seed = async() => {
     name: 'The Fool',
     number: 'Zero',
     img: 'fool.com',
-    description: 'World famous Ivy League universityThe Fool represents new beginnings, having faith in the future, being inexperienced, not knowing what to expect, having beginner\'s luck, improvisation and believing in the universe.'
+    description: 'The Fool represents new beginnings, having faith in the future, being inexperienced, not knowing what to expect, having beginner\'s luck, improvisation and believing in the universe.'
   });
   db.close();
   console.log('Seed Successful!');
