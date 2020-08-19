@@ -1,7 +1,7 @@
 require('dotenv').config();
 // const Card = require('./lib/models/Card.js');
 
-const { tarotPage } = require('./lib/scraper/site.js');
+const { majorArcanaCard } = require('./lib/scraper/site.js');
 
-tarotPage()
+majorArcanaCard()
   .then(data => console.log(data));
