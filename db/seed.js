@@ -1,4 +1,6 @@
-const { db, Card } = require('../index.js');
+require('dotenv').config();
+const { db, Card } = require('../lib/models/Card.js');
+const { majorArcana, majorArcanaCard, minorArcana, minorArcanaCard } = require('../lib/scraper/site.js');
 
 const init = async() => {
   await Card.sync({ force: true }); 
@@ -7,13 +9,16 @@ const init = async() => {
 
 const seed = async() => {
   await db.sync({ force: true });
+ 
+  const majorCards = await majorArcana()
+    .then(urls => Promise.all(urls.map(url => majorArcanaCard(url))));
   
-  await Card.create({
-    name: 'The Fool',
-    number: 'Zero',
-    img: 'fool.com',
-    description: 'The Fool represents new beginnings, having faith in the future, being inexperienced, not knowing what to expect, having beginner\'s luck, improvisation and believing in the universe.'
-  });
+  
+  const minorCards = await minorArcana()
+    .then(urls => Promise.all(urls.map(url => minorArcanaCard(url))));
+
+  await Card.bulkCreate([...majorCards, ...minorCards]);
+
   db.close();
   console.log('Seed Successful!');
 };
@@ -21,3 +26,6 @@ const seed = async() => {
 init().then(() => {
   seed();
 });
+
+
+
