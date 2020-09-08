@@ -3,5 +3,8 @@ require('dotenv').config();
 
 const { majorArcanaCard } = require('./lib/scraper/site.js');
 
+// marjorArcana()
+//   .then(urls => Promise.all(urls));
+
 majorArcanaCard()
   .then(data => console.log(data));
