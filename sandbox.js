@@ -1,10 +1,8 @@
 require('dotenv').config();
 // const Card = require('./lib/models/Card.js');
 
-const { majorArcanaCard } = require('./lib/scraper/site.js');
+const { majorArcana, majorArcanaCard } = require('./lib/scraper/site.js');
 
-// marjorArcana()
-//   .then(urls => Promise.all(urls));
-
-majorArcanaCard()
-  .then(data => console.log(data));
+majorArcana()
+  .then(urls => Promise.all(urls.map(url => majorArcanaCard(url))))
+  .then(console.log);
