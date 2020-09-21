@@ -16,6 +16,6 @@ app.get('/card', async(req, res) => {
   res.json(cards);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening at ${PORT}`);
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
 });
